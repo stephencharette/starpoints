@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails_template_test # CHANGE_ME
+  database: star_points_test # CHANGE_ME
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: rails_template_production # CHANGE_ME
-  username: rails_template # CHANGE_ME
-  password: <%= ENV["RAILS_TEMPLATE_DATABASE_PASSWORD"] %> # CHANGE_ME
+  database: star_points_production # CHANGE_ME
+  username: star_points # CHANGE_ME
+  password: <%= ENV["STAR_POINTS_DATABASE_PASSWORD"] %> # CHANGE_ME
