@@ -2,7 +2,12 @@
 # yarn lockfile v1
 
 
+chart.js@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.0.1.tgz#93d5d50ac222a5b3b6ac7488e82e1553ac031592"
+  integrity sha512-5/8/9eBivwBZK81mKvmIwTb2Pmw4D/5h1RK9fBWZLLZ8mCJ+kfYNmV9rMrGoa5Hgy2/wVDBMLSUDudul2/9ihA==
+
 tailwind-scrollbar-hide@^1.1.7:
   version "1.1.7"
-  resolved "https://registry.yarnpkg.com/tailwind-scrollbar-hide/-/tailwind-scrollbar-hide-1.1.7.tgz#90b481fb2e204030e3919427416650c54f56f847"
+  resolved "https://registry.npmjs.org/tailwind-scrollbar-hide/-/tailwind-scrollbar-hide-1.1.7.tgz"
   integrity sha512-X324n9OtpTmOMqEgDUEA/RgLrNfBF/jwJdctaPZDzB3mppxJk7TLIDmOreEDm1Bq4R9LSPu4Epf8VSdovNU+iA==
