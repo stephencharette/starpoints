@@ -13,6 +13,7 @@ class CreditCardsController < ApplicationController
   # GET /credit_cards/new
   def new
     @credit_card = current_user.credit_cards.new
+    @credit_card.credit_card_image = CreditCardImage.new(card_image: CardImage.blank_card)
   end
 
   # GET /credit_cards/1/edit
@@ -65,6 +66,7 @@ class CreditCardsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def credit_card_params
-    params.require(:credit_card).permit(:name).with_defaults(user: current_user)
+    params.require(:credit_card).permit(:name,
+                                        credit_card_image_attributes: [:card_image_id]).with_defaults(user: current_user)
   end
 end

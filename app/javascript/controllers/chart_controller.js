@@ -85,6 +85,7 @@ export default class ChartController extends Controller {
       // rgb(55,181,115)
       backgroundColor: 'rgb(55,181,115)',
       tension: 0.1,
+      maintainAspectRatio: false,
       borderRadius: 5,
       barThickness: 25,
       lineCap: 'round'

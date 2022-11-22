@@ -638,6 +638,8 @@ module.exports = {
     maxWidth: ({ theme, breakpoints }) => ({
       none: 'none',
       0: '0rem',
+      '3xs': '10rem',
+      '2xs': '15rem',
       xs: '20rem',
       sm: '24rem',
       md: '28rem',
@@ -746,6 +748,7 @@ module.exports = {
       1: '1px',
       2: '2px',
       4: '4px',
+      6: '6px',
       8: '8px',
     },
     ringOpacity: ({ theme }) => ({
@@ -758,6 +761,7 @@ module.exports = {
       1: '1px',
       2: '2px',
       4: '4px',
+      6: '6px',
       8: '8px',
     },
     rotate: {

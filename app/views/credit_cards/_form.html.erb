@@ -16,6 +16,28 @@
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+  <div class="my-5">
+    <%= form.label :card_image %>
+
+    <%= form.fields_for :credit_card_image do |f| %>
+      <ul class="flex flex-wrap gap-3">
+        
+        <% CardImage.order(:name).first(10).each do |card_image| %>
+        
+          <li class="relative">
+            <%= f.radio_button :card_image_id, card_image.id, class: 'sr-only peer', id: card_image.id %>
+            
+            <%= heroicon "check-circle", variant: :solid, options: { class: "absolute top-2 right-2 z-50 peer-checked:opacity-100 opacity-0 text-green-400 h-8 my-auto" } %>
+
+            <label class="flex relative bg-white cursor-pointer focus:outline-none rounded-md hover:bg-gray-50 peer-checked:ring-gray-300 peer-checked:ring-6 peer-checked:border-transparent" for='<%= card_image.id %>'>
+              <%= image_tag card_image.image, class: 'rounded-md max-w-2xs' %>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
