@@ -6,7 +6,11 @@ class User < ApplicationRecord
 
   has_one :role
 
+  has_many :credit_cards
+
   after_create :generate_role
+
+  delegate :admin, to: :role
 
   def generate_role
     Role.create(user: self)

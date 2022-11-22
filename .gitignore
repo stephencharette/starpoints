@@ -28,6 +28,8 @@
 /public/assets
 node_modules/*
 
+/credit_card_images/*
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 

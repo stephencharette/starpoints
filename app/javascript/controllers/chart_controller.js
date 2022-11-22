@@ -22,7 +22,7 @@ export default class ChartController extends Controller {
         ticks: {
           stepSize: 20,
           font: {
-            size: 15
+            size: 12
           },
           callback: function(value, index, ticks) {
               return '$' + value;
@@ -86,8 +86,7 @@ export default class ChartController extends Controller {
       backgroundColor: 'rgb(55,181,115)',
       tension: 0.1,
       borderRadius: 5,
-      barThickness: 30,
-      maxBarThickness: 45,
+      barThickness: 25,
       lineCap: 'round'
     }];
   }

@@ -1,0 +1,13 @@
+<div class="space-y-3 w-full">
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Card Images</h1>
+    
+    <%= link_to new_card_image_path do %>
+      <%= heroicon "plus-circle", variant: :solid, options: { class: "text-black h-10 my-auto" } %>
+    <% end %>
+  </div>
+  
+  <div class="flex flex-wrap gap-3">
+    <%= render @card_images %>
+  </div>
+</div>
