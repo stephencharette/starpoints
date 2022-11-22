@@ -11,16 +11,21 @@
     </div>
   <% end %>
 
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  
   <% if current_page?(action: :new) %>
     <div class="my-5">
-      <%= form.label :images %>
-      <%= form.file_field :images, multiple: true %>
+      <%= form.label :image %>
+      <%= form.file_field :image %>
     </div>
   <% else %>
     <%= render card_image %>
   <% end %>
 
   <div class="inline">
-    <%= form.submit 'Create Card Images', class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

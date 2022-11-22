@@ -13,7 +13,11 @@
 
   <body>
     <%= render 'layouts/nav' %>
-    <main class="container mx-auto px-5 flex">
+
+    <main class="container mx-auto px-5 flex flex-col">
+      <%= render 'layouts/notice' if notice.present? %>
+      <%= render 'layouts/alert' if alert.present? %>
+
       <%= yield %>
     </main>
   </body>

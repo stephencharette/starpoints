@@ -15,15 +15,17 @@ class CardImagesController < ApplicationController
   def edit; end
 
   def create
-    @card_image = CardImage.new(card_image_params)
-
     respond_to do |format|
-      if @card_image.save
-        format.html { redirect_to card_images_path, notice: 'Card Image was successfully created.' }
-        format.json { render :show, status: :created, location: @card_image }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @card_image.errors, status: :unprocessable_entity }
+      ActiveRecord::Base.transaction do
+        card_image_params[:images].drop(1).each do |image|
+          card_image = CardImage.new
+          card_image.image.attach(image)
+          card_image.save!
+        end
+
+        format.html { redirect_to card_images_path, notice: 'Card Images were successfully created.' }
+      rescue StandardError
+        format.html { redirect_to card_images_path, notice: 'Card Images could not be created.' }
       end
     end
   end
@@ -49,6 +51,6 @@ class CardImagesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def card_image_params
-    params.require(:card_image).permit(:name, :image)
+    params.require(:card_image).permit(:name, images: [])
   end
 end
