@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :card_images
   resources :credit_cards
   get 'home/index'
