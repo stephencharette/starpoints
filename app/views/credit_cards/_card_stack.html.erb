@@ -1,0 +1,5 @@
+<div id="credit_cards" class="flex relative">
+  <% @credit_cards.each_with_index do |credit_card, index| %>
+    <%= render credit_card, index: index %>
+  <% end %>
+</div>

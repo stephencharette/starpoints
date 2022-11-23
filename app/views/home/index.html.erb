@@ -1,74 +1,86 @@
 <%= render 'layouts/notice' %>
 <div id="metrics" data-metrics="<%= @metrics.to_json %>"></div>
-<div class="w-full space-y-5">
-  <div id="monthy" class="space-y-2">
-    <h1 class="font-bold text-3xl">November 2022</h1>
-    
-    <div class="bg-white px-5 py-3 rounded-md">
-      <p class="text-xs text-gray-700">Total Spending</p>
-      <h2 class="font-bold text-xl">$136.74</h2>
+<div class="grid grid-cols-2 gap-4 w-full">
+  <div class="hidden lg:block md:col-span-1 space-y-4">
+    <%= render 'credit_cards/wallet' %>
+  </div>
+
+  <div class="col-span-2 lg:col-span-1 space-y-5">
+    <div id="monthy" class="space-y-2 justify-between">
+      <%= render 'layouts/tabs' %>
       
-      <div class="chart-container" data-controller="chart">
-        <canvas id="hero-chart" class="w-full"></canvas>
+      <div class="flex">
+        <%= link_to root_path, class: 'p-2 hover:bg-gray-200 rounded mr-auto my-auto' do %>
+          <%= heroicon "chevron-left", variant: :outline, options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
+        <% end %>
+        <h1 class="font-bold text-3xl">November 2022</h1>
+        <%= link_to root_path, class: 'p-2 hover:bg-gray-200 rounded ml-auto my-auto' do %>
+          <%= heroicon "chevron-right", variant: :outline, options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
+        <% end %>
       </div>
-    </div>
-  </div>
-
-  <div id="transactions">
-    <h3 class="font-semibold text-xl">Recent Transactions</h3>
-
-    <div class="grid grid-cols-1 divide-y bg-white rounded-md">
-      <div class="flex p-2 hover:bg-gray-200">
-        <div class="flex space-x-2 items-center">
-          
-          <%= image_tag 'appleshopping.jpeg', class: 'w-8 rounded' %>
-          
-          <div class="flex flex-col">
-            <p class="font-semibold text-sm leading-4">Apple Store</p>
-            <p class="text-gray-700 text-sm">Tuesday</p>
-          </div>
-        </div>
-
-        <div class="ml-auto flex text-right space-x-2">
-          
-          <div class="flex flex-col">
-            <p class="text-sm">$136.74</p>
-            <p class="bg-gray-300 py-0.25 px-0.5 text-xs rounded leading-2 ml-auto max-w-fit">3%</p>
-          </div>
-          
-          <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
-          
-        </div>
-      </div>
-
-      <%# END FIRST TRANSACTION %>
-
-      <div class="flex p-2 hover:bg-gray-200">
-        <div class="flex space-x-2 items-center">
-          
-          <%= image_tag 'appleshopping.jpeg', class: 'w-8 rounded' %>
-          
-          <div class="flex flex-col">
-            <p class="font-semibold text-sm leading-4">Apple Store</p>
-            <p class="text-gray-700 text-sm">Tuesday</p>
-          </div>
-        </div>
+      
+      <div class="bg-white px-5 py-3 rounded-md">
+        <p class="text-xs text-gray-700">Total Spending</p>
+        <h2 class="font-bold text-xl">$136.74</h2>
         
-        <div class="ml-auto flex text-right space-x-2">
-          
-          <div class="flex flex-col">
-            <p class="text-sm">$136.74</p>
-            <p class="bg-gray-300 py-0.25 px-0.5 text-xs rounded leading-2 ml-auto max-w-fit">3%</p>
-          </div>
-          
-          <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
-          
+        <div class="max-h-64" data-controller="chart">
+          <canvas id="hero-chart" class="w-full"></canvas>
         </div>
       </div>
     </div>
+
+    <div id="transactions">
+      <h3 class="font-semibold text-xl">Recent Transactions</h3>
+
+      <div class="grid grid-cols-1 divide-y bg-white rounded-md">
+        <div class="flex p-2 hover:bg-gray-200">
+          <div class="flex space-x-2 items-center">
+            
+            <%= image_tag 'appleshopping.jpeg', class: 'w-8 rounded' %>
+            
+            <div class="flex flex-col">
+              <p class="font-semibold text-sm leading-4">Apple Store</p>
+              <p class="text-gray-700 text-sm">Tuesday</p>
+            </div>
+          </div>
+
+          <div class="ml-auto flex text-right space-x-2">
+            
+            <div class="flex flex-col">
+              <p class="text-sm">$136.74</p>
+              <p class="bg-gray-300 py-0.25 px-0.5 text-xs rounded leading-2 ml-auto max-w-fit">3%</p>
+            </div>
+            
+            <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
+            
+          </div>
+        </div>
+
+        <%# END FIRST TRANSACTION %>
+
+        <div class="flex p-2 hover:bg-gray-200">
+          <div class="flex space-x-2 items-center">
+            
+            <%= image_tag 'appleshopping.jpeg', class: 'w-8 rounded' %>
+            
+            <div class="flex flex-col">
+              <p class="font-semibold text-sm leading-4">Apple Store</p>
+              <p class="text-gray-700 text-sm">Tuesday</p>
+            </div>
+          </div>
+          
+          <div class="ml-auto flex text-right space-x-2">
+            
+            <div class="flex flex-col">
+              <p class="text-sm">$136.74</p>
+              <p class="bg-gray-300 py-0.25 px-0.5 text-xs rounded leading-2 ml-auto max-w-fit">3%</p>
+            </div>
+            
+            <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
+            
+          </div>
+        </div>
+      </div>
     </div>
-
-    
   </div>
-
 </div>

@@ -1,17 +1,5 @@
 <div class="w-full space-y-4 max-w-md mx-auto">
   <%= render 'layouts/notice' %>
   
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Your wallet</h1>
-
-    <%= link_to new_credit_card_path do %>
-      <%= heroicon "plus-circle", variant: :solid, options: { class: "text-black h-10 my-auto" } %>
-    <% end %>
-  </div>
-
-  <div id="credit_cards" class="flex relative">
-    <% @credit_cards.each_with_index do |credit_card, index| %>
-      <%= render credit_card, index: index %>
-    <% end %>
-  </div>
+  <%= render 'wallet' %>
 </div>
