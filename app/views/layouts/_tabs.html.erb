@@ -1,16 +1,16 @@
 <div class="grid grid-cols-3 min-w-2xs max-w-3xs mx-auto rounded bg-gray-200" x-data="app">
   <div>
     <input type="radio" name="option" id="1" class="peer hidden" />
-    <label for="1" class="text-xs block cursor-pointer select-none rounded p-0.5 text-center peer-checked:bg-blue-500 peer-checked:shadow-lg shadow-black peer-checked:text-white">Week</label>
+    <label for="1" data-action="click->chart#week" class="text-xs block cursor-pointer select-none rounded p-0.5 text-center peer-checked:bg-blue-500 peer-checked:shadow-lg shadow-black peer-checked:text-white">Week</label>
   </div>
 
   <div>
     <input type="radio" name="option" id="2" class="peer hidden" checked />
-    <label for="2" class="text-xs block cursor-pointer select-none rounded p-0.5 text-center peer-checked:bg-blue-500 peer-checked:shadow-lg shadow-black peer-checked:text-white">Month</label>
+    <label for="2" data-action="click->chart#month" class="text-xs block cursor-pointer select-none rounded p-0.5 text-center peer-checked:bg-blue-500 peer-checked:shadow-lg shadow-black peer-checked:text-white">Month</label>
   </div>
 
   <div>
     <input type="radio" name="option" id="3" class="peer hidden" />
-    <label for="3" class="text-xs block cursor-pointer select-none rounded p-0.5 text-center peer-checked:bg-blue-500 peer-checked:shadow-lg shadow-black peer-checked:text-white">Year</label>
+    <label for="3" data-action="click->chart#year" class="text-xs block cursor-pointer select-none rounded p-0.5 text-center peer-checked:bg-blue-500 peer-checked:shadow-lg shadow-black peer-checked:text-white">Year</label>
   </div>
 </div>

@@ -1,0 +1,24 @@
+<%= link_to edit_transaction_path(transaction) do %>
+  <div id="<%= dom_id transaction %>" class="flex p-2 hover:bg-gray-200 peer-hover:bg-gray-200" for='<%= dom_id transaction.credit_card %>'>
+    <div class="flex space-x-2 items-center">
+      
+      <%= image_tag transaction.category.icon, class: 'w-8 rounded' %>
+      
+      <div class="flex flex-col">
+        <p class="font-semibold text-sm leading-4"><%= transaction.memo.present? ? transaction.memo : transaction.category.name %></p>
+        <p class="text-gray-700 text-sm"><%= transaction.transaction_date %></p>
+      </div>
+    </div>
+
+    <div class="ml-auto flex text-right space-x-2">
+      
+      <div class="flex flex-col">
+        <p class="text-sm"><%= number_to_currency(transaction.amount) %></p>
+        <p class="bg-gray-300 py-0.25 px-0.5 text-xs rounded leading-2 ml-auto max-w-fit">X%</p>
+      </div>
+      
+      <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
+      
+    </div>
+  </div>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transactions
   resources :categories
   resources :card_images
   resources :credit_cards

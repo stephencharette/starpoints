@@ -1,9 +1,16 @@
 import { Controller } from "@hotwired/stimulus";
 import { Chart, registerables } from 'chart.js';
+import Rails from '@rails/ujs';
+
+let graph = null;
 
 export default class ChartController extends Controller {
-  static ELEMENT_ID = 'hero-chart';
+  static ELEMENT_ID = 'hero-chart'
+  static targets = [ "title", "spending" ]
   static DEFAULT_OPTIONS = { 
+    animation: {
+      duration: 600
+    },
     responsive: true, maintainAspectRatio: false,
     plugins: {
       legend: {
@@ -27,14 +34,59 @@ export default class ChartController extends Controller {
           callback: function(value, index, ticks) {
               return '$' + value;
           }
-      }
+        }
       }
     }
-  };
+  }
+
+  async updateGraph(data) {
+    if(data == null) {
+      this.spendingTarget.textContent = '$0'  
+      graph.data.datasets[0].data = null
+      graph.config.data.labels = []
+    }
+    else {
+      data = [].concat(data)
+      graph.data.datasets[0].data = data.map((m) => m[1])
+      graph.config.data.labels = data.map((m) => m[0])
+      this.spendingTarget.textContent = "$" + data.map((m) => parseFloat(m[1])).reduce((partialSum, a) => partialSum + a, 0).toFixed(2);
+    }
+
+    graph.update()
+  }
+
+  async week() {
+    this.titleTarget.textContent = this.titleTarget.dataset.titleWeek
+    const response = await fetch('/?timeframe=week', 
+                                 { method: 'GET', headers: { accept: "application/json" } })
+    let data = await response.json()
+    this.updateGraph(data)
+  }
+
+  async month() {
+    this.titleTarget.textContent = this.titleTarget.dataset.titleMonth
+    const response = await fetch('/?timeframe=month', 
+                                 { method: 'GET', headers: { accept: "application/json" } })
+    let data = await response.json()
+    this.updateGraph(data)
+  }
+
+  async year() {
+    this.titleTarget.textContent = this.titleTarget.dataset.titleYear
+    const response = await fetch('/?timeframe=year', 
+                                 { method: 'GET', headers: { accept: "application/json" } })
+    let data = await response.json()
+    this.updateGraph(data)
+  }
 
   connect() {
+    this.titleTarget.textContent = this.titleTarget.dataset.titleMonth
+
     Chart.register(...registerables);
     this.render();
+
+    if(this._metrics == null) this.spendingTarget.textContent = '$0'
+    else this.spendingTarget.textContent = "$" + this.metrics.map((m) => parseFloat(m[1])).reduce((partialSum, a) => partialSum + a, 0).toFixed(2);
   }
 
   render() {
@@ -42,7 +94,7 @@ export default class ChartController extends Controller {
    
     const ctx = this.ele.getContext('2d');
 
-    this.graph = new Chart(ctx, { type: 'bar', data: this.data, options: this.options });
+    graph = new Chart(ctx, { type: 'bar', data: this.data, options: this.options });
   }
 
   get ele() {
@@ -70,19 +122,13 @@ export default class ChartController extends Controller {
   }
 
   get labels() {
-    // return this._labels = this._labels || this.metrics.map((m) => new Date(m.updated_at).toDateString());
     return this._labels = this._labels || this.metrics.map((m) => m[0]);
   }
 
   get datasets() {
     return [{
-      // label: `${this.metric} / ${this.unit}`,
-      // data: this.metrics.map((m) => parseInt(m.value, 10)),
-      // data: this.metrics,
-      data: [55.70, 21.49, 10.99, 41.05, 87.65],
+      data: this.metrics.map((m) => m[1]),
       fill: false,
-      // '#37B573', rgb(235,85,74)
-      // rgb(55,181,115)
       backgroundColor: 'rgb(55,181,115)',
       tension: 0.1,
       maintainAspectRatio: false,

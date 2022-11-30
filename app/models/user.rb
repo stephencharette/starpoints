@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :role
 
   has_many :credit_cards
+  has_many :transactions, through: :credit_cards
 
   after_create :generate_role
 

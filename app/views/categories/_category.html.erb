@@ -1,6 +1,7 @@
 <div id="<%= dom_id category %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">Icon:</strong>
+    <%= image_tag category.icon %>
     <%= link_to category.icon.filename, category.icon if category.icon.attached? %>
   </p>
 

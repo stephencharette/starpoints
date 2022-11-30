@@ -36,6 +36,8 @@ gem 'devise'
 # Icon library view [https://github.com/bharget/heroicon] | find icons here: [https://v1.heroicons.com/]
 gem 'heroicon'
 
+gem "groupdate"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

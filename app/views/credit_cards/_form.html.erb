@@ -22,15 +22,15 @@
     <%= form.fields_for :credit_card_image do |f| %>
       <ul class="flex flex-wrap gap-3">
         
-        <% CardImage.order(:name).first(10).each do |card_image| %>
+        <% CardImage.order(:name).first(20).each do |card_image| %>
         
           <li class="relative">
             <%= f.radio_button :card_image_id, card_image.id, class: 'sr-only peer', id: card_image.id %>
             
-            <%= heroicon "check-circle", variant: :solid, options: { class: "absolute top-2 right-2 z-50 peer-checked:opacity-100 opacity-0 text-green-400 h-8 my-auto" } %>
+            <%= heroicon "check-circle", variant: :solid, options: { class: "absolute top-2 right-2 z-50 peer-checked:opacity-100 opacity-0 text-green-400 h-7 my-auto" } %>
 
             <label class="flex relative bg-white cursor-pointer focus:outline-none rounded-md hover:bg-gray-50 peer-checked:ring-gray-300 peer-checked:ring-6 peer-checked:border-transparent" for='<%= card_image.id %>'>
-              <%= image_tag card_image.image, class: 'rounded-md max-w-2xs' %>
+              <%= image_tag card_image.image, class: 'rounded-md max-w-3xs' %>
             </label>
           </li>
         <% end %>

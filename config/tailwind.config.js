@@ -386,6 +386,9 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
+      brand: [
+        'orpheuspro'
+      ]
     },
     fontSize: {
       '3xs': ['.5rem', { lineHeight: '0.6rem' }],

@@ -11,11 +11,25 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render 'layouts/nav' %>
+  <body class="relative">
+    <main class="max-w-lg lg:max-w-2xl h-screen justify-between mx-auto px-5 flex flex-col">
+      <div class=""><%= render 'layouts/nav' %></div>
+      
+      <% if signed_in? && current_page?(controller: :home, action: :index) %>
+        <div class="absolute top-64 -left-16 lg:hidden">
+          <div id="credit_cards" class="flex relative w-50">
+            <%= render 'credit_cards/vertical_card_stack' %>
+          </div>
+          <%# render 'credit_cards/card_stack' %>
+        </div>
+      <% end %>
 
-    <main class="container mx-auto px-5 flex flex-col">
-      <%= yield %>
+
+      <div class="flex-grow">
+        <%= yield %>
+      </div>
+
+      <%= render 'layouts/sticky_footer' if current_page?(root_path) && signed_in? %>
     </main>
   </body>
 </html>

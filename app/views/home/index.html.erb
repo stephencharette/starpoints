@@ -1,19 +1,21 @@
 <%= render 'layouts/notice' %>
 <div id="metrics" data-metrics="<%= @metrics.to_json %>"></div>
 <div class="grid grid-cols-2 gap-4 w-full">
-  <div class="hidden lg:block md:col-span-1 space-y-4">
+  <div class="lg:col-span-1 col-span-2 order-3 lg:order-1 space-y-4">
     <%= render 'credit_cards/wallet' %>
   </div>
 
-  <div class="col-span-2 lg:col-span-1 space-y-5">
-    <div id="monthy" class="space-y-2 justify-between">
+  <div class="col-span-2 lg:col-span-1 order-2 space-y-5">
+    <div id="" data-controller="chart" class="space-y-2 justify-between">
       <%= render 'layouts/tabs' %>
       
       <div class="flex">
         <%= link_to root_path, class: 'p-2 hover:bg-gray-200 rounded mr-auto my-auto' do %>
           <%= heroicon "chevron-left", variant: :outline, options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
         <% end %>
-        <h1 class="font-bold text-3xl">November 2022</h1>
+        
+        <h1 class="font-bold text-3xl" data-chart-target="title" data-title-week="<%= @date_range %>" data-title-month="<%= DateTime.now.to_date.strftime("%B %Y") %>" data-title-year="<%= DateTime.now.year %>"></h1>  
+        
         <%= link_to root_path, class: 'p-2 hover:bg-gray-200 rounded ml-auto my-auto' do %>
           <%= heroicon "chevron-right", variant: :outline, options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
         <% end %>
@@ -21,65 +23,22 @@
       
       <div class="bg-white px-5 py-3 rounded-md">
         <p class="text-xs text-gray-700">Total Spending</p>
-        <h2 class="font-bold text-xl">$136.74</h2>
+        <h2 data-chart-target="spending" class="font-bold text-xl"><%= number_to_currency(current_user.transactions.sum(:amount)) %></h2>
         
-        <div class="max-h-64" data-controller="chart">
+        <div class="max-h-64">
           <canvas id="hero-chart" class="w-full"></canvas>
         </div>
       </div>
     </div>
 
     <div id="transactions">
-      <h3 class="font-semibold text-xl">Recent Transactions</h3>
+      <div class="flex items-center mb-1 text-center">
+        <h3 class="font-semibold text-xl">Recent Transactions</h3>
+        <%= link_to 'View all', transactions_path, class: 'bg-gray-200 hover:bg-blue-500 text-xs hover:text-white ml-auto py-1 px-2 rounded-lg items-center cursor-pointer' %>
+      </div>
 
       <div class="grid grid-cols-1 divide-y bg-white rounded-md">
-        <div class="flex p-2 hover:bg-gray-200">
-          <div class="flex space-x-2 items-center">
-            
-            <%= image_tag 'appleshopping.jpeg', class: 'w-8 rounded' %>
-            
-            <div class="flex flex-col">
-              <p class="font-semibold text-sm leading-4">Apple Store</p>
-              <p class="text-gray-700 text-sm">Tuesday</p>
-            </div>
-          </div>
-
-          <div class="ml-auto flex text-right space-x-2">
-            
-            <div class="flex flex-col">
-              <p class="text-sm">$136.74</p>
-              <p class="bg-gray-300 py-0.25 px-0.5 text-xs rounded leading-2 ml-auto max-w-fit">3%</p>
-            </div>
-            
-            <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
-            
-          </div>
-        </div>
-
-        <%# END FIRST TRANSACTION %>
-
-        <div class="flex p-2 hover:bg-gray-200">
-          <div class="flex space-x-2 items-center">
-            
-            <%= image_tag 'appleshopping.jpeg', class: 'w-8 rounded' %>
-            
-            <div class="flex flex-col">
-              <p class="font-semibold text-sm leading-4">Apple Store</p>
-              <p class="text-gray-700 text-sm">Tuesday</p>
-            </div>
-          </div>
-          
-          <div class="ml-auto flex text-right space-x-2">
-            
-            <div class="flex flex-col">
-              <p class="text-sm">$136.74</p>
-              <p class="bg-gray-300 py-0.25 px-0.5 text-xs rounded leading-2 ml-auto max-w-fit">3%</p>
-            </div>
-            
-            <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
-            
-          </div>
-        </div>
+        <%= render current_user.transactions.order(transaction_date: :desc).first(10) %>
       </div>
     </div>
   </div>

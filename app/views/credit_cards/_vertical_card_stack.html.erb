@@ -1,0 +1,16 @@
+<div id="credit_cards" class="flex relative">
+  <% @credit_cards.each_with_index do |credit_card, index| %>
+    <div id="<%= dom_id credit_card %>" class="peer absolute transition ease-in-out hover:translate-x-3 duration-300 -z-[<%= credit_card.id %>]" style="top: <%= 3*index %>rem">
+      <%= link_to edit_credit_card_path(credit_card) do %>
+        <% if credit_card.card_image.blank? %>
+          <div class="relative">
+            <h4 class="text-white font-semibold text-2xl absolute top-3 left-4"><%= credit_card.name %></h4>
+            <%= image_tag CardImage.blank_card.image, class: 'rounded-xl shadow-md max-w-md h-32' %>
+          </div>
+        <% else %>
+          <%= image_tag credit_card.card_image.image, class: 'rounded-xl max-w-md h-32' %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

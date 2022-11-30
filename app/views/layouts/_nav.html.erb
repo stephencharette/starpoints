@@ -1,13 +1,17 @@
-<div class="flex mx-5 my-3">
-  <div class="flex ml-auto space-x-2">
+<div class="flex my-4">
+  <%= link_to root_path, class: 'flex' do %>
+    <%= image_tag 'logo', class: 'h-16' %>
+    <div class="flex mt-1 w-full items-center">
+      <h1 class="select-none font-brand font-bold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-pink-500">starpoints</h1>
+      
+      <div class="flex ml-auto space-x-2">
+        <%= link_to 'Sign in', new_user_session_path, class: '' unless user_signed_in? %>
+        <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: '' if user_signed_in? %>
+      </div>
+    </div>
+    
+  <% end %>
+  
 
-    <% if user_signed_in? %>
-      <%= link_to credit_cards_path do %>
-        <%= render 'icons/wallet', classes: 'h-7 w-7' %>
-      <% end %>
-    <% end %>
-
-    <%= link_to 'Sign in', new_user_session_path, class: 'ml-auto' unless user_signed_in? %>
-    <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'ml-auto' if user_signed_in? %>
-  </div>
+  
 </div>
