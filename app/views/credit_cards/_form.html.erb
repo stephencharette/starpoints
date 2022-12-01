@@ -21,7 +21,7 @@
 
     <div data-controller="slideshow">
       <%= form.fields_for :credit_card_image do |f| %>
-        <% CardImage.order(Arel.sql("id = #{credit_card.card_image.id} desc")).all.each_with_index do |card_image, index| %>
+        <% CardImage.order(Arel.sql("id = #{credit_card&.card_image&.id.nil? ? CardImage.blank_card.id : credit_card.card_image.id} desc")).all.each_with_index do |card_image, index| %>
           <% if index % 9 == 0 %>
             <div data-slideshow-target="slide"><ul class="flex flex-wrap gap-3">
           <% end %>
