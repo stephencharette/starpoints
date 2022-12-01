@@ -1,5 +1,5 @@
 <%= render 'layouts/notice' %>
-<div id="metrics" data-metrics="<%= @metrics.to_json %>"></div>
+<div id="metrics" data-metrics="<%= @metrics.to_json %>" data-current-datetime="<%= @current_datetime %>"></div>
 <div class="grid grid-cols-2 gap-4 w-full">
   <div class="lg:col-span-1 col-span-2 order-3 lg:order-1 space-y-4">
     <%= render 'credit_cards/wallet' %>
@@ -10,20 +10,24 @@
       <%= render 'layouts/tabs' %>
       
       <div class="flex">
-        <%= link_to root_path, class: 'p-2 hover:bg-gray-200 rounded mr-auto my-auto' do %>
-          <%= heroicon "chevron-left", variant: :outline, options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
-        <% end %>
+        <div class="p-2 hover:bg-gray-200 rounded mr-auto my-auto cursor-pointer" data-action="click->chart#left">
+          <%= heroicon "chevron-left", 
+            variant: :outline, 
+            options: { class: "text-gray-700 h-4 my-auto" } %>
+        </div>
         
-        <h1 class="font-bold text-3xl" data-chart-target="title" data-title-week="<%= @date_range %>" data-title-month="<%= DateTime.now.to_date.strftime("%B %Y") %>" data-title-year="<%= DateTime.now.year %>"></h1>  
+        <h1 class="font-bold text-2xl" data-chart-target="title" data-title-week="<%= @date_range %>" data-title-month="<%= DateTime.now.to_date.strftime("%B %Y") %>" data-title-year="<%= DateTime.now.year %>"></h1>  
         
-        <%= link_to root_path, class: 'p-2 hover:bg-gray-200 rounded ml-auto my-auto' do %>
-          <%= heroicon "chevron-right", variant: :outline, options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
-        <% end %>
+        <div class="p-2 hover:bg-gray-200 rounded ml-auto my-auto cursor-pointer" data-action="click->chart#right">
+          <%= heroicon "chevron-right", 
+            variant: :outline, 
+            options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
+        </div>
       </div>
       
       <div class="bg-white px-5 py-3 rounded-md">
         <p class="text-xs text-gray-700">Total Spending</p>
-        <h2 data-chart-target="spending" class="font-bold text-xl"><%= number_to_currency(current_user.transactions.sum(:amount)) %></h2>
+        <h2 data-chart-target="spending" class="font-bold text-xl">$0</h2>
         
         <div class="max-h-64">
           <canvas id="hero-chart" class="w-full"></canvas>

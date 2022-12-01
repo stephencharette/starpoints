@@ -4,22 +4,23 @@ class HomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @current_datetime = params[:starting_date].present? ? Date.parse(params[:starting_date]) : DateTime.now
     @date_range = date_range(DateTime.now.to_date.beginning_of_week(:sunday), DateTime.now.to_date.end_of_week(:sunday))
     @credit_cards = current_user.credit_cards.order(:created_at)
 
     @metrics = nil
     @timeframe = case params[:timeframe]
                  when 'week'
-                   DateTime.now.to_date.beginning_of_week(:sunday)..DateTime.now.to_date.end_of_week(:sunday)
+                   @current_datetime.to_date.beginning_of_week(:sunday)..@current_datetime.to_date.end_of_week(:sunday)
                  when 'month'
-                   DateTime.now.at_beginning_of_month..DateTime.now
+                   @current_datetime.at_beginning_of_month..@current_datetime
                  when 'year'
-                   DateTime.now.beginning_of_year..DateTime.now
+                   @current_datetime.beginning_of_year..@current_datetime
                  when nil
-                   DateTime.now.at_beginning_of_month..DateTime.now.end_of_month
+                   @current_datetime.at_beginning_of_month..@current_datetime.end_of_month
                  end
 
-    days = %w[Sat Mon Tue Wed Thu Fri Sun]
+    days = %w[Sun Mon Tue Wed Thu Fri Sat]
     months = %w[Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec]
     transactions = current_user.transactions.where(transaction_date: @timeframe)
 
@@ -49,7 +50,7 @@ class HomeController < ApplicationController
           elsif params[:timeframe] == 'year'
             months[index].to_s
           else
-            "#{index.zero? ? 1 : index * 7}-#{index == 4 ? DateTime.now.end_of_month.day : ((index + 1) * 7 - 1)}"
+            "#{index.zero? ? 1 : index * 7}-#{index == 4 ? @current_datetime.end_of_month.day : ((index + 1) * 7 - 1)}"
           end, u.second
         ]
       end
