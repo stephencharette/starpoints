@@ -387,7 +387,7 @@ module.exports = {
         'monospace',
       ],
       brand: [
-        'orpheuspro'
+        'Poppins', ...defaultTheme.fontFamily.sans
       ]
     },
     fontSize: {
