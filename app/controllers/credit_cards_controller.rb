@@ -1,6 +1,6 @@
 class CreditCardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_credit_card, only: %i[show edit update destroy]
+  before_action :set_credit_card, only: %i[show edit update destroy move]
 
   # GET /credit_cards or /credit_cards.json
   def index
@@ -57,6 +57,12 @@ class CreditCardsController < ApplicationController
     end
   end
 
+  # PATCH /credit_cards/:id/move
+  def move
+    @credit_card.insert_at(params[:position].to_i)
+    head :ok
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -66,7 +72,7 @@ class CreditCardsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def credit_card_params
-    params.require(:credit_card).permit(:name,
+    params.require(:credit_card).permit(:name, :position,
                                         credit_card_image_attributes: [:card_image_id]).with_defaults(user: current_user)
   end
 end

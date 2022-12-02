@@ -1,4 +1,4 @@
-<div id="<%= dom_id credit_card %>" class="peer absolute transition ease-in-out hover:-translate-y-3 duration-300 -z-[<%= credit_card.id %>]" style="top: <%= 3*index %>rem">
+<div id="<%= dom_id credit_card %>" data-element-id='<%= credit_card.id %>' class="peer grab-handle absolute transition ease-in-out hover:-translate-y-3 duration-300 -z-[<%= credit_card.position %>]" style="top: <%= 3*index %>rem">
   <%= link_to edit_credit_card_path(credit_card) do %>
     <% if credit_card.card_image.blank? %>
       <div class="relative">

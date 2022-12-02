@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def index
     @current_datetime = params[:starting_date].present? ? Date.parse(params[:starting_date]) : DateTime.now
     @date_range = date_range(DateTime.now.to_date.beginning_of_week(:sunday), DateTime.now.to_date.end_of_week(:sunday))
-    @credit_cards = current_user.credit_cards.order(:created_at)
+    @credit_cards = current_user.credit_cards.order(:position)
 
     @metrics = nil
     @timeframe = case params[:timeframe]

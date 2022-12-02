@@ -9,3 +9,4 @@ pin '@rails/ujs', to: 'https://ga.jspm.io/npm:@rails/ujs@7.0.3-1/lib/assets/comp
 pin 'chart.js', to: 'https://ga.jspm.io/npm:chart.js@4.0.1/dist/chart.js'
 pin_all_from 'app/javascript/custom', under: 'custom'
 pin 'datepicker.js', to: 'https://unpkg.com/flowbite@1.5.4/dist/datepicker.js'
+pin 'sortablejs', to: 'https://ga.jspm.io/npm:sortablejs@1.14.0/modular/sortable.esm.js'

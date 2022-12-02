@@ -1,4 +1,4 @@
-<div id="credit_cards" class="flex relative">
+<div id="credit_cards" class="flex relative" data-controller='drag' data-drag-url='/credit_cards/:id/move'>
   <% @credit_cards.each_with_index do |credit_card, index| %>
     <%= render credit_card, index: index %>
   <% end %>
