@@ -12,11 +12,9 @@ class HomeController < ApplicationController
     @timeframe = case params[:timeframe]
                  when 'week'
                    @current_datetime.to_date.beginning_of_week(:sunday)..@current_datetime.to_date.end_of_week(:sunday)
-                 when 'month'
-                   @current_datetime.at_beginning_of_month..@current_datetime
                  when 'year'
                    @current_datetime.beginning_of_year..@current_datetime
-                 when nil
+                 else
                    @current_datetime.at_beginning_of_month..@current_datetime.end_of_month
                  end
 
