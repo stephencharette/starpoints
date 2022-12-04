@@ -13,7 +13,7 @@
 
   <body class="relative">
     <main class="max-w-lg lg:max-w-2xl h-screen justify-between mx-auto px-5 flex flex-col">
-      <div class=""><%= render 'layouts/nav' %></div>
+      <% unless controller_name == 'sessions' || controller_name == 'registrations' %><div class=""><%= render 'layouts/nav' %></div><% end %>
       
       <% if signed_in? && current_page?(controller: :home, action: :index) %>
         <div class="absolute top-64 -left-16 lg:hidden">

@@ -1,29 +1,37 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="mt-4 max-w-sm w-full mx-auto">
+  
+  <div class='flex items-center'>
+    <%= image_tag 'logo', class: 'h-16' %>
+  
+    <div class="ml-auto flex">
+      <p>Have an account?</p>
+      <%= link_to "Sign In", new_user_session_path, class: 'ml-1 text-md font-medium text-indigo-700 hover:text-indigo-900'%>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    
+  <div class='flex items-center space-x-2 mt-10'>
+    <h1 class="text-2xl font-semibold">Sign up to</h1>
+    <h1 class="select-none font-brand font-bold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-pink-500">starpoints</h1>
   </div>
+  
+  <div class="mt-5">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+      <div class="field">
+        <%= f.label :email, class: 'font-medium' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'rounded w-full md:w-full' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="field mt-5">
+        <%= f.label :password, class: 'font-medium' %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'rounded w-full md:w-full' %>
+      </div>
+
+      <div class="actions mt-5">
+        <%= f.submit "Sign up", class: 'btn hover:cursor-pointer w-full px-5 py-2 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-800 hover:text-white cursor-pointer' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
