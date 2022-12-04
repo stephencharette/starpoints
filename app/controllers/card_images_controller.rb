@@ -25,7 +25,7 @@ class CardImagesController < ApplicationController
 
         format.html { redirect_to card_images_path, notice: 'Card Images were successfully created.' }
       rescue StandardError
-        format.html { redirect_to card_images_path, notice: 'Card Images could not be created.' }
+        format.html { redirect_to card_images_path, alert: 'Card Images could not be created.' }
       end
     end
   end

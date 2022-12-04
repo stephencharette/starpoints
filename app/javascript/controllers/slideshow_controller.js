@@ -9,13 +9,11 @@ export default class extends Controller {
   }
 
   next(e) {
-    e.preventDefault();
     this.index++
     this.showCurrentSlide()
   }
 
   previous(e) {
-    e.preventDefault();
     if(this.index != 0) this.index--
     this.showCurrentSlide()
   }
