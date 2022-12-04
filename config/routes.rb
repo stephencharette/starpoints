@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'import', to: 'transactions#import'
+  post 'import_transactions', to: 'transactions#import_transactions'
+
   get 'home/index'
   devise_for :users
 

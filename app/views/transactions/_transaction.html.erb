@@ -1,8 +1,12 @@
 <%= link_to edit_transaction_path(transaction) do %>
-  <div id="<%= dom_id transaction %>" class="flex p-2 hover:bg-gray-200 peer-hover:bg-gray-200" for='<%= dom_id transaction.credit_card %>'>
+  <div id="<%= dom_id transaction %>" class="flex p-2 hover:bg-gray-200 peer-hover:bg-gray-200">
     <div class="flex space-x-2 items-center">
       
-      <%= image_tag transaction.category.icon, class: 'w-8 rounded' %>
+      <% if transaction.category.icon.present? %>
+        <%= image_tag transaction.category.icon, class: 'w-8 rounded' %>
+      <% else %>
+        <div class="bg-blue-300 w-8 h-full rounded text-center">?</div>
+      <% end %>
       
       <div class="flex flex-col">
         <p class="font-semibold text-sm leading-4"><%= transaction.memo.present? ? transaction.memo : transaction.category.name %></p>

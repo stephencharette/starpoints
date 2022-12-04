@@ -1,6 +1,7 @@
 class CreditCardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_credit_card, only: %i[show edit update destroy move]
+  before_action :get_card_images, only: %i[new edit]
 
   # GET /credit_cards or /credit_cards.json
   def index
@@ -64,6 +65,10 @@ class CreditCardsController < ApplicationController
   end
 
   private
+
+  def get_card_images
+    @card_images = CardImage.order(Arel.sql("id = #{@credit_card&.card_image&.id.nil? ? CardImage.blank_card.id : @credit_card.card_image.id} desc")).all
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_credit_card

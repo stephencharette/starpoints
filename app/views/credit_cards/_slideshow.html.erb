@@ -1,0 +1,39 @@
+<div data-controller="slideshow">
+  
+    <% credit_cards.each_with_index do |credit_card, index| %>
+      <% if index % 9 == 0 %>
+        <div data-slideshow-target="slide"><ul class="flex flex-wrap gap-3">
+      <% end %>
+
+        <li class="relative">
+          <%= form.radio_button :credit_card_id, credit_card.id, class: 'sr-only peer', id: credit_card.id %>
+          
+          <%= heroicon "check-circle", variant: :solid, options: { class: "absolute top-2 right-2 z-50 peer-checked:opacity-100 opacity-0 text-green-400 h-7 my-auto" } %>
+
+          <label class="flex relative bg-white cursor-pointer focus:outline-none rounded-md hover:bg-gray-50 peer-checked:ring-gray-300 peer-checked:ring-6 peer-checked:border-transparent" for='<%= credit_card.id %>'>
+            <%= image_tag credit_card.card_image.image, class: 'rounded-md max-w-3xs' %>
+          </label>
+        </li>
+
+      <% if index % 9 == 8 %>
+        </ul></div>
+      <% end %>
+    <% end %>
+  
+
+  <% if credit_cards.count > 12 %>
+    <div class="flex mt-5">
+      <button class="p-2 hover:bg-gray-200 rounded mr-auto my-auto cursor-pointer" data-action="slideshow#previous">
+        <%= heroicon "chevron-left", 
+          variant: :outline, 
+          options: { class: "text-gray-700 h-4 my-auto" } %>
+      </button>
+            
+      <button class="p-2 hover:bg-gray-200 rounded ml-auto my-auto cursor-pointer" data-action="slideshow#next">
+        <%= heroicon "chevron-right", 
+          variant: :outline, 
+          options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
+      </button>
+    </div>
+  <% end %>
+</div>

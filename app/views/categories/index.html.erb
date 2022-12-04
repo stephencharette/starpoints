@@ -3,12 +3,16 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Categories</h1>
-    <%= link_to 'New category', new_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="flex justify-between items-center mb-1">
+    <h1 class="font-bold text-3xl">Categories</h1>
+    <%= link_to new_category_path do %>
+      <%= heroicon "plus-circle", variant: :solid, options: { class: "text-black h-8 my-auto" } %>
+    <% end %>
   </div>
 
-  <div id="categories" class="min-w-full">
-    <%= render @categories %>
+  <div class="grid grid-cols-1 divide-y bg-white rounded-md">
+    <div id="categories" class="min-w-full">
+      <%= render @categories %>
+    </div>
   </div>
 </div>

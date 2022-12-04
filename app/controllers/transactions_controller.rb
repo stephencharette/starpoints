@@ -20,7 +20,9 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
-    @transaction = current_user.transactions.new(transaction_params)
+    @transaction = current_user.transactions.new(transaction_params.merge(transaction_date: Date.strptime(
+      transaction_params[:transaction_date], '%m/%d/%Y'
+    )))
 
     respond_to do |format|
       if @transaction.save
@@ -56,6 +58,22 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def import; end
+
+  def import_transactions
+    response = Transaction.import(params: params, user: current_user)
+
+    respond_to do |format|
+      if response.nil?
+        format.html { redirect_to import_path, alert: 'Transactions could not be imported.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to transactions_url, notice: 'Transactions were successfully imported.' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -65,6 +83,7 @@ class TransactionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def transaction_params
-    params.require(:transaction).permit(:memo, :category_id, :credit_card_id, :amount, :transaction_date)
+    params.require(:transaction).permit(:memo, :category_id, :credit_card_id, :amount, :transaction_date,
+                                        credit_cards: [:credit_card_id])
   end
 end

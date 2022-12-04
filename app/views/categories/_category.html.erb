@@ -1,17 +1,19 @@
-<div id="<%= dom_id category %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Icon:</strong>
-    <%= image_tag category.icon %>
-    <%= link_to category.icon.filename, category.icon if category.icon.attached? %>
-  </p>
+<%= link_to edit_category_path(category) do %>
+  <div id="<%= dom_id category %>" class="flex p-2 hover:bg-gray-200 peer-hover:bg-gray-200">
+    <div class="flex space-x-2 items-center">
+      <% if category.icon.present? %>
+        <%= image_tag category.icon, class: 'w-8 rounded' %>
+      <% else %>
+        <div class="bg-blue-300 w-8 h-full rounded text-center">?</div>
+      <% end %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= category.name %>
-  </p>
+      <div class="flex flex-col">
+        <p class="text-lg leading-4"><%= category.name %></p>
+      </div>
+    </div>
 
-  <% if action_name != "show" %>
-    <%= link_to 'Edit this category', edit_category_path(category), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+    <div class="ml-auto flex text-right space-x-2">
+      <%= heroicon "chevron-right", variant: :outline, options: { class: "text-gray-700 h-4 my-auto" } %>
+    </div>
+  </div>
+<% end %>
