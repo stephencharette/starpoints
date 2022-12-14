@@ -49,3 +49,7 @@ processes = []
 [[statics]]
   guest_path = "/app/public"
   url_prefix = "/"
+
+[mounts]
+  source="starpoints_data"
+  destination="/data"

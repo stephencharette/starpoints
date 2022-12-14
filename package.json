@@ -3,6 +3,7 @@
     "chart.js": "^4.0.1",
     "flowbite-datepicker": "^1.2.2",
     "sortablejs": "^1.15.0",
+    "stimulus-datepicker": "^1.0.1",
     "tailwind-scrollbar-hide": "^1.1.7"
   }
 }

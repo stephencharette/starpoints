@@ -3,41 +3,46 @@
 
 
 "@popperjs/core@^2.9.3":
-  "integrity" "sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw=="
-  "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
-  "version" "2.11.6"
+  version "2.11.6"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
+  integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
-"chart.js@^4.0.1":
-  "integrity" "sha512-5/8/9eBivwBZK81mKvmIwTb2Pmw4D/5h1RK9fBWZLLZ8mCJ+kfYNmV9rMrGoa5Hgy2/wVDBMLSUDudul2/9ihA=="
-  "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.0.1.tgz"
-  "version" "4.0.1"
+chart.js@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/chart.js/-/chart.js-4.0.1.tgz"
+  integrity sha512-5/8/9eBivwBZK81mKvmIwTb2Pmw4D/5h1RK9fBWZLLZ8mCJ+kfYNmV9rMrGoa5Hgy2/wVDBMLSUDudul2/9ihA==
 
-"flowbite-datepicker@^1.2.2":
-  "integrity" "sha512-qOKDVtwkiOa0RrhD3sRtT45H8efAtyLiswuFIAV0UBhWSRYonzL0g1gAZwHiRRKtSmbET/8RQpQXlSEmAgadkg=="
-  "resolved" "https://registry.npmjs.org/flowbite-datepicker/-/flowbite-datepicker-1.2.2.tgz"
-  "version" "1.2.2"
+flowbite-datepicker@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/flowbite-datepicker/-/flowbite-datepicker-1.2.2.tgz"
+  integrity sha512-qOKDVtwkiOa0RrhD3sRtT45H8efAtyLiswuFIAV0UBhWSRYonzL0g1gAZwHiRRKtSmbET/8RQpQXlSEmAgadkg==
   dependencies:
-    "flowbite" "^1.4.5"
+    flowbite "^1.4.5"
 
-"flowbite@^1.4.5":
-  "integrity" "sha512-A4VTeJE+aHSbwrMzWvpTADhNgX8Njpb3DqRL26pFkOupklPg8cmNstZK8cXrFnBPxomOiX/OazZnhQM1BIZADQ=="
-  "resolved" "https://registry.npmjs.org/flowbite/-/flowbite-1.5.4.tgz"
-  "version" "1.5.4"
+flowbite@^1.4.5:
+  version "1.5.4"
+  resolved "https://registry.npmjs.org/flowbite/-/flowbite-1.5.4.tgz"
+  integrity sha512-A4VTeJE+aHSbwrMzWvpTADhNgX8Njpb3DqRL26pFkOupklPg8cmNstZK8cXrFnBPxomOiX/OazZnhQM1BIZADQ==
   dependencies:
     "@popperjs/core" "^2.9.3"
-    "mini-svg-data-uri" "^1.4.3"
+    mini-svg-data-uri "^1.4.3"
 
-"mini-svg-data-uri@^1.4.3":
-  "integrity" "sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg=="
-  "resolved" "https://registry.npmjs.org/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz"
-  "version" "1.4.4"
+mini-svg-data-uri@^1.4.3:
+  version "1.4.4"
+  resolved "https://registry.npmjs.org/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz"
+  integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
 
-"sortablejs@^1.15.0":
-  "integrity" "sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w=="
-  "resolved" "https://registry.npmjs.org/sortablejs/-/sortablejs-1.15.0.tgz"
-  "version" "1.15.0"
+sortablejs@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.npmjs.org/sortablejs/-/sortablejs-1.15.0.tgz"
+  integrity sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==
 
-"tailwind-scrollbar-hide@^1.1.7":
-  "integrity" "sha512-X324n9OtpTmOMqEgDUEA/RgLrNfBF/jwJdctaPZDzB3mppxJk7TLIDmOreEDm1Bq4R9LSPu4Epf8VSdovNU+iA=="
-  "resolved" "https://registry.npmjs.org/tailwind-scrollbar-hide/-/tailwind-scrollbar-hide-1.1.7.tgz"
-  "version" "1.1.7"
+stimulus-datepicker@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/stimulus-datepicker/-/stimulus-datepicker-1.0.1.tgz#a917f70d0c87b9a8cb578beb4da38ce62c3d7210"
+  integrity sha512-xiJouzpE6pxKcp82w5NmV0w9YyEP3ro4r99b1srEQIIFRm1fdZA1Hh7NQPLFpPJG82z3m/OBH5jO9RUu9xnuvQ==
+
+tailwind-scrollbar-hide@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.npmjs.org/tailwind-scrollbar-hide/-/tailwind-scrollbar-hide-1.1.7.tgz"
+  integrity sha512-X324n9OtpTmOMqEgDUEA/RgLrNfBF/jwJdctaPZDzB3mppxJk7TLIDmOreEDm1Bq4R9LSPu4Epf8VSdovNU+iA==
