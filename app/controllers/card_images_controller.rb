@@ -19,12 +19,14 @@ class CardImagesController < ApplicationController
       ActiveRecord::Base.transaction do
         card_image_params[:images].drop(1).each do |image|
           card_image = CardImage.new
+          card_image.name = image.original_filename
           card_image.image.attach(image)
           card_image.save!
         end
 
         format.html { redirect_to card_images_path, notice: 'Card Images were successfully created.' }
-      rescue StandardError
+      rescue StandardError => e
+        Rails.logger.error "RESCUE : #{e}"
         format.html { redirect_to card_images_path, alert: 'Card Images could not be created.' }
       end
     end
