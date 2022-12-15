@@ -1,7 +1,6 @@
 class CreditCardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_credit_card, only: %i[show edit update destroy move]
-  before_action :get_card_images, only: %i[new edit]
 
   # GET /credit_cards or /credit_cards.json
   def index
@@ -15,10 +14,13 @@ class CreditCardsController < ApplicationController
   def new
     @credit_card = current_user.credit_cards.new
     @credit_card.credit_card_image = CreditCardImage.new(card_image: CardImage.blank_card)
+    @card_images = CardImage.order(Arel.sql("id = #{@credit_card.credit_card_image.card_image.id} desc")).all
   end
 
   # GET /credit_cards/1/edit
-  def edit; end
+  def edit
+    @card_images = CardImage.order(Arel.sql("id = #{@credit_card.card_image.id} desc")).all
+  end
 
   # POST /credit_cards or /credit_cards.json
   def create
@@ -26,7 +28,7 @@ class CreditCardsController < ApplicationController
 
     respond_to do |format|
       if @credit_card.save
-        format.html { redirect_to credit_cards_path, notice: 'Credit card was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Credit card was successfully created.' }
         format.json { render :show, status: :created, location: @credit_card }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +41,7 @@ class CreditCardsController < ApplicationController
   def update
     respond_to do |format|
       if @credit_card.update(credit_card_params)
-        format.html { redirect_to credit_cards_path, notice: 'Credit card was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Credit card was successfully updated.' }
         format.json { render :show, status: :ok, location: @credit_card }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,10 +67,6 @@ class CreditCardsController < ApplicationController
   end
 
   private
-
-  def get_card_images
-    @card_images = CardImage.order(Arel.sql("id = #{@credit_card&.card_image&.id.nil? ? CardImage.blank_card.id : @credit_card.card_image.id} desc")).all
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_credit_card

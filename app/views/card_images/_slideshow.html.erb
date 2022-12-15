@@ -20,20 +20,20 @@
       <% end %>
     <% end %>
   <% end %>
-
-  <% if card_images.count > 12 %>
-    <div class="flex mt-5">
-      <a class="p-2 hover:bg-gray-200 rounded mr-auto my-auto cursor-pointer" data-action="slideshow#previous">
-        <%= heroicon "chevron-left", 
-          variant: :outline, 
-          options: { class: "text-gray-700 h-4 my-auto" } %>
-      </a>
-            
-      <a class="p-2 hover:bg-gray-200 rounded ml-auto my-auto cursor-pointer" data-action="slideshow#next">
-        <%= heroicon "chevron-right", 
-          variant: :outline, 
-          options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
-      </a>
-    </div>
-  <% end %>
 </div>
+
+<% if card_images.count > 12 %>
+  <div class="flex mt-5">
+    <a class="p-2 hover:bg-gray-200 rounded mr-auto my-auto cursor-pointer" data-action="slideshow#previous">
+      <%= heroicon "chevron-left", 
+        variant: :outline, 
+        options: { class: "text-gray-700 h-4 my-auto" } %>
+    </a>
+          
+    <a class="p-2 hover:bg-gray-200 rounded ml-auto my-auto cursor-pointer" data-action="slideshow#next">
+      <%= heroicon "chevron-right", 
+        variant: :outline, 
+        options: { class: "cursor-pointer text-gray-700 h-4 my-auto" } %>
+    </a>
+  </div>
+<% end %>
