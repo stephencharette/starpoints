@@ -15,8 +15,8 @@ processes = []
 
 [env]
   PORT = "8080"
-  RAILS_ENV = production
-  RACK_ENV = production
+  RAILS_ENV = "production"
+  RACK_ENV = "production"
 
 [experimental]
   allowed_public_ports = []
